@@ -70,37 +70,36 @@
 
 #include <stdio.h>
 
-enum { MAX_OUTPUT_BUFFER_ = 2000 };
-
 int
 	main(int argc, char *argv[])
 {
 
 	// test xml
 	ProcessXML xml;
-	XmlElement one_element[] = { 
-		//{1,		"DataLength111",	{ "" },	"",	{ "Message" , "DataLength"}},
-		{1,		"DataLength",		{ "" },	"",	{ "Message" }},
-		{1,		"Version",			{ "" },	"",	{ "Message" }},
-		{1,		"CmdCode",			{ "" },	"",	{ "Message" }},
-		{1,		"XmlLength",		{ "" },	"",	{ "Message" }},
-		{1,		"SourceID",			{ "" },	"",	{ "Message" }},
-		{1,		"DestinationID",	{ "" },	"",	{ "Message" }},
-		{-1,		"NULL",				{ "" },	"",	}
+	XmlElement init_element[] = { 
+		{XML_ROOT,			"Message" },
+		{XML_ELEMENT,		"DataLength",		{ "atrb", "ff" }, { "12", "33" },	"",	{ "Message" }},
+		{XML_ELEMENT,		"Version",			{ "bb" },	{ "23" },	"",	{ "Message" }},
+		{XML_ELEMENT,		"CmdCode",			{ "" },		{ "" },		"",	{ "Message" }},
+		{XML_ELEMENT,		"XmlLength",		{ "" },		{  },		"",	{ "Message" }},
+		{XML_ELEMENT,		"SourceID",			{ "" },		{ "" },		"",	{ "Message" }},
+		{XML_ELEMENT,		"DestinationID",	{ "" },		{ "" },		"",	{ "Message" }},
+		{XML_EOF}
 	};
-
-	xml.InitXml("Message");
-	for (int i = 0; 0 != strcmp(one_element[i].element_key, "NULL"); i++) {
-		xml.AddFrameInfoToXml(&one_element[i]);
-	}
-	XML_Char *p_xml_buffer = NULL;
-	// create xml frame
-	p_xml_buffer = xml.SaveXmlIntoBuffer(1000);
+	// get xml frame buf
+	XML_Char *p_xml_buffer = xml.CreateXmlBuffer(init_element);
+	xml.PrintXmlBuffer(p_xml_buffer);
 	// add content in xml
 	XmlElement add_element = {
-		1,		"DataLength",		{ "" },	"1000",	{ "Message" }
+		XML_ELEMENT,		"DataLength",		{ "" },		{}, 	"1000",	{ "Message" }
 	};
 	p_xml_buffer = xml.AddElementInXmlBuffer(p_xml_buffer, &add_element);
+	xml.PrintXmlBuffer(p_xml_buffer);
+	// get content in xml
+	XmlElement get_element = {
+		XML_ELEMENT,		"Version",		{ "" },		{}, 	"",	{ "Message" }
+	};
+	xml.GetElementInXmlBuffer(p_xml_buffer, &get_element);
 
 	// test send video buf
 	ProcessSendVideoBuffer send_video_buf;

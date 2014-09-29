@@ -15,6 +15,78 @@
 #include "HNProtocol.h"
 using namespace std;
 
+// xml data
+enum { MAX_OUTPUT_BUFFER_ = 2000 };
+
+enum {
+	XML_EOF = -1,
+	XML_ROOT = 0,
+	XML_ELEMENT,
+	XML_SUB_ELEMENT
+};
+
+typedef struct {
+	int element_deep; // 数组结束标志，如果-1则表示结束
+	char *element_key; // key标志
+	char *key_attrib[100]; // key的属性
+	char *key_attrib_content[100]; // key属性内容
+	char *element_info; // content内容
+	char *parent_key[100]; // 父类节点集合
+	char *cur_parent_key; // 当前父节点位置
+	int cur_parent_key_index; // 当前父节点计数
+
+	void XmlElement()
+	{
+		element_deep = 0;
+		element_key = NULL;
+		*key_attrib = NULL;
+		*key_attrib_content = NULL;
+		element_info = NULL;
+		*parent_key = NULL;
+		cur_parent_key = *parent_key;
+	}
+} XmlElement;
+
+
+class ProcessXML:public HNProtocol
+{
+public:
+	ProcessXML();
+	~ProcessXML();
+
+public:
+	void GetHeartBeat(int version) {}
+	void SendHeartBeat(int version) {}
+	int  SendVideoReq(int version);
+
+private:
+	int AddFrameInfoToXml(scew_tree *xml_tree, scew_element *xml_root, scew_element *xml_element,
+		XmlElement *pelement);
+	int AddXmlElement_(scew_element *element, XmlElement *add_element, int add_kind);
+	int AddXmlElement_2(scew_element *element, XmlElement *add_element, int add_kind);
+	int GetXmlElement_(scew_element *element, XmlElement *in_element);
+	void GetXmlElement_2(scew_element *element, XmlElement *out_element);
+	XML_Char* SaveXmlIntoBuffer(scew_tree *m_xml_tree, scew_writer *m_xml_writer, 
+		scew_printer *m_xml_printer, int buf_size = MAX_OUTPUT_BUFFER_);
+
+public:
+	XML_Char* CreateXmlBuffer(XmlElement *all_elements);
+	XML_Char* AddElementInXmlBuffer(XML_Char *buffer_in, XmlElement *add_element, int add_kind = SET_ELEMENT);
+	void GetElementInXmlBuffer(XML_Char *buffer_in, XmlElement *in_element);
+	void PrintXmlBuffer(XML_Char *xml_buffer);
+
+public:
+	enum {
+		SET_ELEMENT		= 0x00000001,	// 设置element相关content
+		ADD_ELEMENT		= 0x00000010,	// 添加element
+		ALL_OF_KIND		= 0x00000011	// 添加element并设置相关content
+	};
+};
+
+static XML_Char* save_xml_into_buffer(scew_tree *xml_tree, scew_printer *xml_printer, scew_writer *xml_writer, int buf_size);
+
+///////////////////////////SendVideoBuffer Class////////////////////////////////////
+
 // 发送data
 enum {
 	SEND_BLOCK_DATA_LEN = 0,
@@ -52,6 +124,31 @@ typedef struct {
 
 } SendVideoReqData;
 
+class ProcessSendVideoBuffer:public ProcessXML
+{
+public:
+	ProcessSendVideoBuffer();
+	~ProcessSendVideoBuffer();
+
+	// SendVideoBuffer
+	int InitSendVideoBuffer();
+	int SetSendVideoBufferXml(XML_Char *xml_buffer);
+	int UpdateSendVideoBuffer();
+	int GetSendVideoBuffer(char *p_in = NULL);
+	SendVideoReqData GetSendVideoBufferHeader();
+
+public:
+	// block send data used
+	SendVideoReqData m_send_video_req_header;
+	char *m_send_video_req_buf;
+	XML_Char *m_xml_buffer;
+
+};
+//////////////////////SendVideoBuffer Class End/////////////////////////////////////////
+
+
+//////////////////////ReceiveVideoBuffer Class//////////////////////////////////////////
+
 // 接收data
 enum {
 	RECV_BLOCK_DATA_LEN = 0,
@@ -86,88 +183,6 @@ typedef struct {
 
 } ReceiveVideoReqData;
 
-// xml data
-typedef struct {
-	int element_deep; // 数组结束标志，如果-1则表示结束
-	char *element_key; // key标志
-	char *key_attrib[100]; // key的属性
-	char *element_info; // content内容
-	char *parent_key[100]; // 父类节点集合
-	char *cur_parent_key; // 当前父节点位置
-	int cur_parent_key_index; // 当前父节点计数
-
-	void XmlElement()
-	{
-		element_deep = 0;
-		element_key = NULL;
-		*key_attrib = NULL;
-		element_info = NULL;
-		*parent_key = NULL;
-		cur_parent_key = *parent_key;
-	}
-} XmlElement;
-
-
-class ProcessXML:public HNProtocol
-{
-public:
-	ProcessXML();
-	~ProcessXML();
-
-public:
-	void GetHeartBeat(int version) {}
-	void SendHeartBeat(int version) {}
-	int  SendVideoReq(int version);
-
-	// init xml tree...
-	int InitXml(char *tree = "null");
-	int AddFrameInfoToXml(XmlElement *pelement);
-	XML_Char* SaveXmlIntoBuffer(int buf_size);
-	void ShowXmlBuffer(XML_Char *xml_buffer);
-	int AddXmlElement_(scew_element *element, XmlElement *add_element);
-	XML_Char* AddElementInXmlBuffer(XML_Char *buffer_in, XmlElement *add_element);
-	void ReleaseXmlValue();
-
-private:
-
-public:
-	// xml used
-	scew_tree		*m_xml_tree;
-	scew_element	*m_xml_root;
-	scew_element	*m_xml_element;
-	scew_printer	*m_xml_printer;
-	scew_writer		*m_xml_writer; 
-	//XML_Char		*m_xml_buffer;
-};
-
-static XML_Char* save_xml_into_buffer(scew_tree *xml_tree, scew_printer *xml_printer, scew_writer *xml_writer, int buf_size);
-
-///////////////////////////SendVideoBuffer Class////////////////////////////////////
-
-class ProcessSendVideoBuffer:public ProcessXML
-{
-public:
-	ProcessSendVideoBuffer();
-	~ProcessSendVideoBuffer();
-
-	// SendVideoBuffer
-	int InitSendVideoBuffer();
-	int SetSendVideoBufferXml(XML_Char *xml_buffer);
-	int UpdateSendVideoBuffer();
-	int GetSendVideoBuffer(char *p_in = NULL);
-	SendVideoReqData GetSendVideoBufferHeader();
-
-public:
-	// block send data used
-	SendVideoReqData m_send_video_req_header;
-	char *m_send_video_req_buf;
-	XML_Char *m_xml_buffer;
-
-};
-//////////////////////SendVideoBuffer Class End/////////////////////////////////////////
-
-
-//////////////////////ReceiveVideoBuffer Class//////////////////////////////////////////
 class ProcessReceiveVideoBuffer:public ProcessXML
 {
 public: 
