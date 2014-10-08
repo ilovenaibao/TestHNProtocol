@@ -60,8 +60,21 @@
 *   </scew_test>
 */
 
-
+#include "TestHNProtocol.h"
 #include "ProcessXML.h"
+#include <conio.h>
+#include "leak_detector/leak_detector_c.h"
+#include <Windows.h>
+#include "BaseXmlParser.h"
+
+#if CLIENT_TEST
+#include "test/Client.h"
+#endif
+
+#if SERVER_TEST
+#include "test/Server.h"
+#endif
+
 
 #if defined(_MSC_VER) && defined(XML_UNICODE_WCHAR_T)
 #include <fcntl.h>
@@ -73,9 +86,8 @@
 int
 	main(int argc, char *argv[])
 {
-
 	// test xml
-	ProcessXML xml;
+	BaseXmlParser xml;
 	XmlElement init_element[] = { 
 		{XML_ROOT,			"Message" },
 		{XML_ELEMENT,		"DataLength",		{ "atrb", "ff" }, { "12", "33" },	"",	{ "Message" }},
@@ -86,37 +98,64 @@ int
 		{XML_ELEMENT,		"DestinationID",	{ "" },		{ "" },		"",	{ "Message" }},
 		{XML_EOF}
 	};
-	// get xml frame buf
-	XML_Char *p_xml_buffer = xml.CreateXmlBuffer(init_element);
-	xml.PrintXmlBuffer(p_xml_buffer);
-	// add content in xml
+
 	XmlElement add_element = {
 		XML_ELEMENT,		"DataLength",		{ "" },		{}, 	"1000",	{ "Message" }
 	};
-	p_xml_buffer = xml.AddElementInXmlBuffer(p_xml_buffer, &add_element);
+
+	XML_Char *p_xml_buffer = NULL;
+
+	// get xml frame buf
+	p_xml_buffer = xml.CreateXmlBuffer(init_element);
+	// add content in xml
+	p_xml_buffer = xml.AddElementInXmlBuffer(p_xml_buffer, &add_element, 1);
 	xml.PrintXmlBuffer(p_xml_buffer);
+
 	// get content in xml
 	XmlElement get_element = {
 		XML_ELEMENT,		"Version",		{ "" },		{}, 	"",	{ "Message" }
 	};
 	xml.GetElementInXmlBuffer(p_xml_buffer, &get_element);
 
+
+#if CLIENT_TEST
+
 	// test send video buf
 	ProcessSendVideoBuffer send_video_buf;
 	send_video_buf.InitSendVideoBuffer();
 	send_video_buf.SetSendVideoBufferXml(p_xml_buffer);
+	send_video_buf.SetSendVideoBufferData(p_xml_buffer, strlen(p_xml_buffer));
 	send_video_buf.UpdateSendVideoBuffer();
-	send_video_buf.GetSendVideoBuffer();
-	SendVideoReqData send_data = send_video_buf.GetSendVideoBufferHeader();
+	// client
+	client_main(send_video_buf.m_send_video_req_buf, send_video_buf.m_send_video_req_header.block_data_len);
 
-	// test recv video buf
-	ProcessReceiveVideoBuffer recv_video_buf;
-	recv_video_buf.InitReceiveVideoBuffer();
-	recv_video_buf.UpdateReceiveVideoBuffer();
-	recv_video_buf.GetReceiveVideoBuffer();
-	ReceiveVideoReqData recv_data = recv_video_buf.GetReceiveVideoBufferHeader();
+	//// recv send video buf and parser
+	//send_video_buf.GetSendVideoBuffer();
+	//SendVideoReqData send_data = send_video_buf.GetSendVideoBufferHeader();
 
+#endif
 
+#if SERVER_TEST
+
+	// test send video buf
+	ProcessSendVideoBuffer send_video_buf;
+	send_video_buf.InitSendVideoBuffer();
+	send_video_buf.SetSendVideoBufferXml(p_xml_buffer);
+	send_video_buf.SetSendVideoBufferData(p_xml_buffer, strlen(p_xml_buffer));
+	send_video_buf.UpdateSendVideoBuffer();
+
+	server_main(p_xml_buffer, send_video_buf.m_send_video_req_header.block_data_len);
+
+#endif
+
+	if (NULL != p_xml_buffer) {
+		free(p_xml_buffer);
+		p_xml_buffer = NULL;
+	}
+
+	atexit(report_mem_leak);
+
+	getch();
 
 	return 0;
 

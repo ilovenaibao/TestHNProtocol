@@ -22,6 +22,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{0ff433a9-353e-4c63-b78c-0b79198569ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\test">
+      <UniqueIdentifier>{720b586c-645c-4963-811f-48e305fb2700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\leak_detector">
+      <UniqueIdentifier>{13c74732-f90b-475c-8d4c-11f88157481f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -112,6 +118,18 @@
       <Filter>include</Filter>
     </ClCompile>
     <ClCompile Include="include\ProcessXML.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="include\test\Client.cpp">
+      <Filter>源文件\test</Filter>
+    </ClCompile>
+    <ClCompile Include="include\test\Server.cpp">
+      <Filter>源文件\test</Filter>
+    </ClCompile>
+    <ClCompile Include="leak_detector\leak_detector_c.cpp">
+      <Filter>源文件\leak_detector</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseXmlParser.cpp">
       <Filter>include</Filter>
     </ClCompile>
   </ItemGroup>
@@ -237,6 +255,21 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\common.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\test\Client.h">
+      <Filter>源文件\test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\test\Server.h">
+      <Filter>源文件\test</Filter>
+    </ClInclude>
+    <ClInclude Include="TestHNProtocol.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="leak_detector\leak_detector_c.h">
+      <Filter>源文件\leak_detector</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseXmlParser.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

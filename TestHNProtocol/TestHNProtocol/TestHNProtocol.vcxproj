@@ -90,6 +90,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseXmlParser.cpp" />
+    <ClCompile Include="include\test\Client.cpp" />
+    <ClCompile Include="include\test\Server.cpp" />
+    <ClCompile Include="leak_detector\leak_detector_c.cpp">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TurnOffAllWarnings</WarningLevel>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="TestHNProtocol.cpp" />
     <ClCompile Include="scew1.1.6\attribute.c" />
@@ -122,7 +128,11 @@
     <ClCompile Include="include\ProcessXML.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseXmlParser.h" />
     <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\test\Client.h" />
+    <ClInclude Include="include\test\Server.h" />
+    <ClInclude Include="leak_detector\leak_detector_c.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="scew1.1.6\attribute.h" />
@@ -163,6 +173,7 @@
     <ClInclude Include="expat\xmltok_impl.h" />
     <ClInclude Include="include\HNProtocol.h" />
     <ClInclude Include="include\ProcessXML.h" />
+    <ClInclude Include="TestHNProtocol.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="scew1.1.6\Makefile.am" />
