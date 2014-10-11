@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="FZffmpeg">
+</Property><Property Name="Solution File" Value="E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg.sln">
+</Property><Property Name="User Options File" Value="E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg.suo">
+</Property><Property Name="Date" Value="2014年10月8日">
+</Property><Property Name="Time" Value="9:42">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="FZffmpeg.sln" Description="File successfully backed up as E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="FZffmpeg.suo" Description="File successfully backed up as E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg.suo.old">
+</Event><Event ErrorLevel="0" Project="FZffmpeg" Source="FZffmpeg\FZffmpeg.vcproj" Description="Converting project file 'E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg\FZffmpeg.vcproj'.">
+</Event><Event ErrorLevel="1" Project="FZffmpeg" Source="FZffmpeg\FZffmpeg.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="FZffmpeg" Source="FZffmpeg\FZffmpeg.vcproj" Description="Done converting to new project file 'E:\Worksapce\github_commit\TestHNProtocol\FZffmpeg\FZffmpeg\FZffmpeg.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="FZffmpeg" Source="FZffmpeg\FZffmpeg.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="FZffmpeg.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="FZffmpeg.sln" Description="Converted">
+</Event></UpgradeLog>

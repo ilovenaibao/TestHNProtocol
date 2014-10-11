@@ -17,6 +17,7 @@ public:
 	//连接上指定服务器
 	int Connect(int port,const char* address);
 	int Run();
+	int SendN(SOCKET s, const char* buf, int len);
 	int RecvN(SOCKET s, char* buf, int len);
 
 	//发送信息
@@ -28,12 +29,14 @@ private:
 	SOCKET m_sock;
 
 public:
-	char *m_send_buf;
+	char *m_send_head_buf;
 	int m_send_buf_len;
+	char *m_send_xml;
+	char *m_send_data;
 
 };
 
-void client_main(char *p_send, int send_buf_size);
+void client_main(char *p_send_head, int send_buf_size, char *p_xml, char *p_data);
 
 
 #endif

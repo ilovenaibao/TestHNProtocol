@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Decode">
+      <UniqueIdentifier>{2c262a56-ac4a-40cb-8c17-ab51a7ea3746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decode\libavcodec">
+      <UniqueIdentifier>{3fb1de9b-32f5-4be6-a12d-970d3c9de4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decode\libavutil">
+      <UniqueIdentifier>{d41ecb61-27a3-40e2-be88-8aaf2080a813}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FZffmpeg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\bitstream.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\cabac.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\dsputil.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\error_resilience.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\golomb.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\h264.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\h264idct.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\imgconvert.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\mem.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\mpegvideo.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\simple_idct.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavcodec\utils.c">
+      <Filter>Decode\libavcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavutil\crc.c">
+      <Filter>Decode\libavutil</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavutil\mathematics.c">
+      <Filter>Decode\libavutil</Filter>
+    </ClCompile>
+    <ClCompile Include="Decode\libavutil\rational.c">
+      <Filter>Decode\libavutil</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\avcodec.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\bitstream.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\cabac.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\dsputil.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\faandct.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\golomb.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\h264data.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\imgconvert_template.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\mpegvideo.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\opt.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\simple_idct.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavcodec\snow.h">
+      <Filter>Decode\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\avutil.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\bswap.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\common.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\config.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\crc.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\integer.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\intfloat_readwrite.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\mathematics.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="Decode\libavutil\rational.h">
+      <Filter>Decode\libavutil</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

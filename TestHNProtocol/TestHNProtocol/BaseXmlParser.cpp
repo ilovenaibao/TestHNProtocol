@@ -172,10 +172,12 @@ int BaseXmlParser::AddXmlElement_(scew_element *element, XmlElement *add_element
 
 	scew_list *list = NULL;
 
-	if (element == NULL || NULL == add_element ||
-		NULL == add_element->element_key || 0 == strcmp(add_element->element_key, "") ||
-		NULL == *add_element->parent_key || 0 == strcmp(*add_element->parent_key, ""))
+	if (element == NULL || NULL == add_element)
 	{
+		return ret;
+	}
+	if (NULL == add_element->element_key || 0 == strcmp(add_element->element_key, "") ||
+		NULL == *add_element->parent_key || 0 == strcmp(*add_element->parent_key, "")) {
 		return ret;
 	}
 	if (NULL == add_element->cur_parent_key) {

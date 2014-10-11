@@ -2,6 +2,7 @@
 ServerNet.cpp
 */
 #include "Server.h"
+#include "HNProtocol.h"
 
 int CServerNet::Init( const char* address,int port )
 {
@@ -86,6 +87,7 @@ void CServerNet::Run()
 				//接收数据
 				memset(buf,0,sizeof(buf));
 				rval = recv(newSocket, buf, 1024, 0);
+				SendMegHead *p = (SendMegHead *)buf;
 
 				if (rval == SOCKET_ERROR) {
 					//这应该是个异常，当客户端没有调用closeSocket就直接退出游戏的时候，将会进入这里
@@ -123,6 +125,30 @@ void CServerNet::Run()
 	closesocket(m_sock);
 }
 
+int CServerNet::SendN(SOCKET s, const char* buf, int len)
+{
+	int cut = len;
+	int cutlen = 0;
+
+	while(cut > 0)
+	{
+		cutlen = send(s, (const char *)buf, cut, 0 );
+		if(cutlen<0)
+		{
+			return -1;
+		}
+		if(cutlen == 0)
+		{
+			return len-cut;
+		}
+
+		buf += cutlen;
+		cut -= cutlen;
+	}
+	return len;
+}
+
+
 int CServerNet::RecvN(SOCKET s, char* buf, int len)
 {
 	int cut = len;
@@ -148,14 +174,14 @@ int CServerNet::RecvN(SOCKET s, char* buf, int len)
 
 
 // test main
-int server_main(char *p_send_buf, int send_buf_size)
+int server_main(char *p_send_head, int send_buf_size, char *p_xml, char *p_data)
 {
 	CServerNet serverNet;
-	int iRlt = serverNet.Init("127.0.0.1", 8888);
+	int iRlt = serverNet.Init("127.0.0.1", 19531);
 	if (iRlt == 0)
 	{
 		printf("init ok...\n");
-		serverNet.m_send_buf = p_send_buf;
+		serverNet.m_send_buf = p_send_head;
 		serverNet.m_send_buf_len = send_buf_size;
 		serverNet.Run();
 	} else {

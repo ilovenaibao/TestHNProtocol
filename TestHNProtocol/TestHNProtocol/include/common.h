@@ -147,10 +147,10 @@ int save_buffer_to_file(char *buf, const char *file_name, const char *mode, int 
 		return 0;
 	}
 	fseek(pf, 0, SEEK_END);
-	char *p_new_line[] = { "\n", {"------------------------------------------------------"} };
+	/*char *p_new_line[] = { "\n", {"------------------------------------------------------"} };
 	fwrite(p_new_line[0], strlen(p_new_line[0]), 1, pf);
 	fwrite(p_new_line[1], strlen(p_new_line[1]), 1, pf);
-	fwrite(p_new_line[0], strlen(p_new_line[0]), 1, pf);
+	fwrite(p_new_line[0], strlen(p_new_line[0]), 1, pf);*/
 
 	fwrite(buf, buf_len, 1, pf);
 	fclose(pf);

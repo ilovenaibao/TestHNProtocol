@@ -3,8 +3,7 @@
 
 
 
-//#define TEST_TCP_CONNECT
-
+#define TEST_TCP_CONNECT
 #ifdef TEST_TCP_CONNECT
 #define SERVER_TEST 0  // 编译时用于控制编译server/client
 #if SERVER_TEST

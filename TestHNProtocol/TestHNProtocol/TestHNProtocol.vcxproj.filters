@@ -13,20 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="scew1.1.6">
-      <UniqueIdentifier>{5cc9dbfa-d877-4519-ab20-a4487313b6af}</UniqueIdentifier>
-    </Filter>
     <Filter Include="expat">
-      <UniqueIdentifier>{f607c6c1-5018-45fa-90c8-8fbfe832eb15}</UniqueIdentifier>
+      <UniqueIdentifier>{2dd51c49-7fb3-4366-a5ce-c582cc18482b}</UniqueIdentifier>
     </Filter>
     <Filter Include="include">
-      <UniqueIdentifier>{0ff433a9-353e-4c63-b78c-0b79198569ac}</UniqueIdentifier>
+      <UniqueIdentifier>{5c082466-1dd8-40fd-b1d7-05d94a69d946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scew1.1.6">
+      <UniqueIdentifier>{3bd9c0b3-51e6-4306-b90d-a51f5b0a1a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="leak_detector">
+      <UniqueIdentifier>{b71f8f6d-1ddf-4eb9-bd94-bfeecc3f40ec}</UniqueIdentifier>
     </Filter>
     <Filter Include="源文件\test">
-      <UniqueIdentifier>{720b586c-645c-4963-811f-48e305fb2700}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\leak_detector">
-      <UniqueIdentifier>{13c74732-f90b-475c-8d4c-11f88157481f}</UniqueIdentifier>
+      <UniqueIdentifier>{995323b1-a4bf-4aec-9f58-8acb98db2f51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +35,27 @@
     </ClCompile>
     <ClCompile Include="TestHNProtocol.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="expat\xmlparse.c">
+      <Filter>expat</Filter>
+    </ClCompile>
+    <ClCompile Include="expat\xmlrole.c">
+      <Filter>expat</Filter>
+    </ClCompile>
+    <ClCompile Include="expat\xmltok.c">
+      <Filter>expat</Filter>
+    </ClCompile>
+    <ClCompile Include="expat\xmltok_impl.c">
+      <Filter>expat</Filter>
+    </ClCompile>
+    <ClCompile Include="expat\xmltok_ns.c">
+      <Filter>expat</Filter>
+    </ClCompile>
+    <ClCompile Include="include\HNProtocol.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ProcessOcxXML.cpp">
+      <Filter>include</Filter>
     </ClCompile>
     <ClCompile Include="scew1.1.6\attribute.c">
       <Filter>scew1.1.6</Filter>
@@ -99,38 +120,17 @@
     <ClCompile Include="scew1.1.6\xparser.c">
       <Filter>scew1.1.6</Filter>
     </ClCompile>
-    <ClCompile Include="expat\xmlparse.c">
-      <Filter>expat</Filter>
-    </ClCompile>
-    <ClCompile Include="expat\xmlrole.c">
-      <Filter>expat</Filter>
-    </ClCompile>
-    <ClCompile Include="expat\xmltok.c">
-      <Filter>expat</Filter>
-    </ClCompile>
-    <ClCompile Include="expat\xmltok_impl.c">
-      <Filter>expat</Filter>
-    </ClCompile>
-    <ClCompile Include="expat\xmltok_ns.c">
-      <Filter>expat</Filter>
-    </ClCompile>
-    <ClCompile Include="include\HNProtocol.cpp">
-      <Filter>include</Filter>
-    </ClCompile>
     <ClCompile Include="include\ProcessXML.cpp">
       <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="leak_detector\leak_detector_c.cpp">
+      <Filter>leak_detector</Filter>
     </ClCompile>
     <ClCompile Include="include\test\Client.cpp">
       <Filter>源文件\test</Filter>
     </ClCompile>
     <ClCompile Include="include\test\Server.cpp">
       <Filter>源文件\test</Filter>
-    </ClCompile>
-    <ClCompile Include="leak_detector\leak_detector_c.cpp">
-      <Filter>源文件\leak_detector</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseXmlParser.cpp">
-      <Filter>include</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +139,57 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\amigaconfig.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\ascii.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\asciitab.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\expat.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\expat_external.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\iasciitab.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\internal.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\latin1tab.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\macconfig.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\nametab.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\utf8tab.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\winconfig.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\xmlrole.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\xmltok.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="expat\xmltok_impl.h">
+      <Filter>expat</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HNProtocol.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProcessOcxXML.h">
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="scew1.1.6\attribute.h">
       <Filter>scew1.1.6</Filter>
@@ -203,59 +254,14 @@
     <ClInclude Include="scew1.1.6\xparser.h">
       <Filter>scew1.1.6</Filter>
     </ClInclude>
-    <ClInclude Include="expat\amigaconfig.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\ascii.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\asciitab.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\expat.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\expat_external.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\iasciitab.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\internal.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\latin1tab.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\macconfig.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\nametab.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\utf8tab.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\winconfig.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\xmlrole.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\xmltok.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="expat\xmltok_impl.h">
-      <Filter>expat</Filter>
-    </ClInclude>
-    <ClInclude Include="include\HNProtocol.h">
+    <ClInclude Include="include\common.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\ProcessXML.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\common.h">
-      <Filter>include</Filter>
+    <ClInclude Include="leak_detector\leak_detector_c.h">
+      <Filter>leak_detector</Filter>
     </ClInclude>
     <ClInclude Include="include\test\Client.h">
       <Filter>源文件\test</Filter>
@@ -263,23 +269,8 @@
     <ClInclude Include="include\test\Server.h">
       <Filter>源文件\test</Filter>
     </ClInclude>
-    <ClInclude Include="TestHNProtocol.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="leak_detector\leak_detector_c.h">
-      <Filter>源文件\leak_detector</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseXmlParser.h">
-      <Filter>include</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="scew1.1.6\Makefile.am">
-      <Filter>scew1.1.6</Filter>
-    </None>
-    <None Include="include\说明.txt">
-      <Filter>scew1.1.6</Filter>
-    </None>
     <None Include="expat\expat.dsp">
       <Filter>expat</Filter>
     </None>
@@ -306,6 +297,12 @@
     </None>
     <None Include="expat\Makefile.MPW">
       <Filter>expat</Filter>
+    </None>
+    <None Include="scew1.1.6\Makefile.am">
+      <Filter>scew1.1.6</Filter>
+    </None>
+    <None Include="include\说明.txt">
+      <Filter>scew1.1.6</Filter>
     </None>
     <None Include="ReadMe.txt" />
   </ItemGroup>

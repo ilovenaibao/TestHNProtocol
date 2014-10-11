@@ -22,6 +22,7 @@ public:
 	int Init(const char* address,int port);
 	//更新数据
 	void Run();
+	int SendN(SOCKET s, const char* buf, int len);
 	int RecvN(SOCKET s, char* buf, int len);
 
 private:
@@ -33,7 +34,7 @@ public:
 
 };
 
-int server_main(char *p_send_buf, int send_buf_size);
+int server_main(char *p_send_head, int send_buf_size, char *p_xml, char *p_data);
 
 
 #endif

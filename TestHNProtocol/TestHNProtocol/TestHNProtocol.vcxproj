@@ -90,14 +90,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BaseXmlParser.cpp" />
+    <ClCompile Include="include\ProcessXML.cpp" />
     <ClCompile Include="include\test\Client.cpp" />
     <ClCompile Include="include\test\Server.cpp" />
-    <ClCompile Include="leak_detector\leak_detector_c.cpp">
-      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TurnOffAllWarnings</WarningLevel>
-    </ClCompile>
+    <ClCompile Include="leak_detector\leak_detector_c.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="TestHNProtocol.cpp" />
+    <ClCompile Include="expat\xmlparse.c" />
+    <ClCompile Include="expat\xmlrole.c" />
+    <ClCompile Include="expat\xmltok.c" />
+    <ClCompile Include="expat\xmltok_impl.c" />
+    <ClCompile Include="expat\xmltok_ns.c" />
+    <ClCompile Include="include\HNProtocol.cpp" />
+    <ClCompile Include="include\ProcessOcxXML.cpp" />
     <ClCompile Include="scew1.1.6\attribute.c" />
     <ClCompile Include="scew1.1.6\element.c" />
     <ClCompile Include="scew1.1.6\element_attribute.c" />
@@ -119,22 +124,32 @@
     <ClCompile Include="scew1.1.6\xattribute.c" />
     <ClCompile Include="scew1.1.6\xerror.c" />
     <ClCompile Include="scew1.1.6\xparser.c" />
-    <ClCompile Include="expat\xmlparse.c" />
-    <ClCompile Include="expat\xmlrole.c" />
-    <ClCompile Include="expat\xmltok.c" />
-    <ClCompile Include="expat\xmltok_impl.c" />
-    <ClCompile Include="expat\xmltok_ns.c" />
-    <ClCompile Include="include\HNProtocol.cpp" />
-    <ClCompile Include="include\ProcessXML.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseXmlParser.h" />
     <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\ProcessXML.h" />
     <ClInclude Include="include\test\Client.h" />
     <ClInclude Include="include\test\Server.h" />
     <ClInclude Include="leak_detector\leak_detector_c.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="expat\amigaconfig.h" />
+    <ClInclude Include="expat\ascii.h" />
+    <ClInclude Include="expat\asciitab.h" />
+    <ClInclude Include="expat\expat.h" />
+    <ClInclude Include="expat\expat_external.h" />
+    <ClInclude Include="expat\iasciitab.h" />
+    <ClInclude Include="expat\internal.h" />
+    <ClInclude Include="expat\latin1tab.h" />
+    <ClInclude Include="expat\macconfig.h" />
+    <ClInclude Include="expat\nametab.h" />
+    <ClInclude Include="expat\utf8tab.h" />
+    <ClInclude Include="expat\winconfig.h" />
+    <ClInclude Include="expat\xmlrole.h" />
+    <ClInclude Include="expat\xmltok.h" />
+    <ClInclude Include="expat\xmltok_impl.h" />
+    <ClInclude Include="include\HNProtocol.h" />
+    <ClInclude Include="include\ProcessOcxXML.h" />
     <ClInclude Include="scew1.1.6\attribute.h" />
     <ClInclude Include="scew1.1.6\bool.h" />
     <ClInclude Include="scew1.1.6\element.h" />
@@ -156,28 +171,8 @@
     <ClInclude Include="scew1.1.6\xelement.h" />
     <ClInclude Include="scew1.1.6\xerror.h" />
     <ClInclude Include="scew1.1.6\xparser.h" />
-    <ClInclude Include="expat\amigaconfig.h" />
-    <ClInclude Include="expat\ascii.h" />
-    <ClInclude Include="expat\asciitab.h" />
-    <ClInclude Include="expat\expat.h" />
-    <ClInclude Include="expat\expat_external.h" />
-    <ClInclude Include="expat\iasciitab.h" />
-    <ClInclude Include="expat\internal.h" />
-    <ClInclude Include="expat\latin1tab.h" />
-    <ClInclude Include="expat\macconfig.h" />
-    <ClInclude Include="expat\nametab.h" />
-    <ClInclude Include="expat\utf8tab.h" />
-    <ClInclude Include="expat\winconfig.h" />
-    <ClInclude Include="expat\xmlrole.h" />
-    <ClInclude Include="expat\xmltok.h" />
-    <ClInclude Include="expat\xmltok_impl.h" />
-    <ClInclude Include="include\HNProtocol.h" />
-    <ClInclude Include="include\ProcessXML.h" />
-    <ClInclude Include="TestHNProtocol.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="scew1.1.6\Makefile.am" />
-    <None Include="include\说明.txt" />
     <None Include="expat\expat.dsp" />
     <None Include="expat\expat_static.dsp" />
     <None Include="expat\expatw.dsp" />
@@ -187,6 +182,8 @@
     <None Include="expat\libexpatw.def" />
     <None Include="expat\libscewwd.dll" />
     <None Include="expat\Makefile.MPW" />
+    <None Include="scew1.1.6\Makefile.am" />
+    <None Include="include\说明.txt" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
